@@ -1,0 +1,462 @@
+:root{
+  --happy: linear-gradient(180deg,#fff8c5,#ffe066);
+  --chill: linear-gradient(180deg,#d8f3ff,#a2e4ff);
+  --energetic: linear-gradient(180deg,#ffe3c4,#ffb977);
+  --sad: linear-gradient(180deg,#dde7ff,#9fb6ff);
+  --focused: linear-gradient(180deg,#ece5ff,#c7b4ff);
+
+  --text-dark:#0b1b2b;
+  --muted:#6b7280;
+  --overlay-card:#ffffffdd;
+  --radius:16px;
+  --shadow-tile:0 18px 40px rgba(15,23,42,0.25);
+  --shadow-card:0 26px 60px rgba(15,23,42,0.32);
+
+  --header-h:64px;
+}
+
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  height:100%;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  color:var(--text-dark);
+  -webkit-font-smoothing:antialiased;
+}
+
+body{
+  background:#f4f5f7;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ----- NAVBAR ----- */
+.site-header{
+  position:sticky;
+  top:0;
+  height:var(--header-h);
+  background:#ffffffd9;
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid #e5e7eb;
+  z-index:80;
+}
+.nav{
+  max-width:1100px;
+  margin:0 auto;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  position:relative;        /* tagline ko center karne ke liye  */
+}
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+}
+.brand{font-weight:800;}
+.divider{opacity:0.5;}
+/* tagline abs center in the whole nav bar */
+.tagline{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  font-weight:600;
+  color:var(--muted);
+  font-size:1.65rem;
+}
+.nav-right{display:flex;gap:10px;}
+.nav-link{
+  text-decoration:none;
+  color:var(--text-dark);
+  font-weight:700;
+  padding:6px 10px;
+  border-radius:8px;
+}
+.nav-link:hover{background:#e5e7eb;}
+
+/* ----- MAIN MOOD ROW ----- */
+.main{
+  max-width:1100px;
+  margin:32px auto 32px;
+  padding:0 16px;
+}
+.question{
+  margin:0 0 32px 0;
+  font-size:1.6rem;
+  font-weight:800;
+  text-align:center;
+}
+
+/* row containing mood tiles */
+.mood-row{
+  display:flex;
+  justify-content:center;
+  gap:28px;
+}
+
+/* bigger, taller mood tiles */
+.mood-tile{
+  flex:0 0 270px;          /* width ~170px */
+  min-height:300px;        /* taller */
+  border-radius:30px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:var(--shadow-tile);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.mood-tile:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px rgba(15,23,42,0.32);
+}
+.mood-name{
+  font-weight:800;
+  font-size:1.3rem;
+  text-transform:capitalize;
+}
+
+/* BG colors per mood (tiles) */
+.mood-tile.happy{background:var(--happy);}
+.mood-tile.chill{background:var(--chill);}
+.mood-tile.energetic{background:var(--energetic);}
+.mood-tile.sad{background:var(--sad);}
+.mood-tile.focused{background:var(--focused);}
+
+/* ----- OVERLAY (full page mood) ----- */
+.mood-overlay{
+  position:fixed;
+  left:0;
+  top:var(--header-h);
+  width:100%;
+  height:calc(100vh - var(--header-h));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  transform:scale(0.8);
+  transform-origin:50% 20%;
+  transition:opacity .35s ease, transform .35s ease;
+  z-index:70;
+}
+
+/* when open */
+.mood-overlay.is-open{
+  pointer-events:auto;
+  opacity:1;
+  visibility:visible;
+  transform:scale(1);
+}
+
+/* background per mood */
+.mood-overlay.happy{background:var(--happy);}
+.mood-overlay.chill{background:var(--chill);}
+.mood-overlay.energetic{background:var(--energetic);}
+.mood-overlay.sad{background:var(--sad);}
+.mood-overlay.focused{background:var(--focused);}
+
+.mood-overlay-inner{
+  width:100%;
+  max-width:900px;
+  padding:24px 18px 32px;
+}
+
+.mood-overlay-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.mood-title{
+  margin:0;
+  font-size:2.2rem;
+  font-weight:800;
+}
+.mood-bg-note{
+  display:none;            /* text UI se gayab */
+  margin:0;
+}
+
+.close-btn{
+  border:0;
+  background:#ffffffdd;
+  border-radius:999px;
+  padding:4px 10px;
+  font-size:1.3rem;
+  cursor:pointer;
+  box-shadow:var(--shadow-card);
+}
+
+/* actions */
+.choose-label{
+  margin:24px 0 10px;
+  font-weight:700;
+}
+.actions-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.action-pill{
+  border-radius:999px;
+  border:0;
+  background:#ffffff;
+  padding:14px 28px;              /* bigger buttons */
+  font-weight:800;
+  font-size:1.05rem;
+  cursor:pointer;
+  box-shadow:0 12px 24px rgba(0,0,0,0.25);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.action-pill:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 32px rgba(0,0,0,0.3);
+}
+
+
+/* suggestion card */
+.mood-card{
+  margin-top:22px;
+  background:var(--overlay-card);
+  border-radius:var(--radius);
+  padding:18px 16px;
+  box-shadow:var(--shadow-card);
+  min-height:130px;
+}
+.card-title{margin:0 0 6px 0;font-weight:800;}
+.card-text{margin:0;color:var(--muted);}
+
+/* footer */
+.site-footer{
+  text-align:center;
+  padding:12px 0 16px;
+  color:var(--muted);
+  font-weight:600;
+}
+
+/* responsive */
+@media (max-width:900px){
+  .mood-row{
+    flex-direction:column;
+    align-items:center;
+  }
+  .mood-tile{
+    flex:0 1 auto;
+    width:70%;
+    min-height:160px;
+  }
+  .mood-overlay-inner{padding:20px 14px;}
+  .mood-title{font-size:1.8rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+a{
+  text-decoration: none;
+}
+/* About page navbar brand color fix */
+.site-header .brand{
+  color:#000;
+  text-decoration:none;
+  font-weight:800;
+}
+
+/* Force Moodify left */
+.site-header .nav{
+  justify-content:space-between;
+}
+.about-creator{
+  margin-top:40px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.creator-img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #000;
+}
+
+.creator-info h3{
+  margin:0;
+  font-size:1.2rem;
+  font-weight:800;
+}
+
+.creator-info p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-weight:600;
+}
+.desktop-title {
+  font-weight: 700;
+}
+
+/* Hide "Mend Your Mood" on small screens */
+@media (max-width: 600px) {
+  .desktop-title {
+    display: none;
+  }
+}
+/* === NAV FIX FOR MOBILE === */
+
+.site-header {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.nav {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.divider {
+  color: #9ca3af;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #111827;
+  font-weight: 500;
+  padding: 6px 10px;      /* more tap area */
+  border-radius: 999px;
+}
+
+.nav-link:hover {
+  background: #f3f4f6;
+}
+
+/* MOBILE: hide tagline + bigger tap targets */
+@media (max-width: 600px) {
+  .tagline {
+    display: none;        /* hide "Mend Your Mood" on phones */
+  }
+
+  .nav {
+    padding: 10px 16px;
+  }
+
+  .nav-link {
+    padding: 8px 12px;    /* even easier to tap */
+  }
+}
+/* --- FIX: tagline should not cover nav links --- */
+.tagline {
+  position: static;       /* cancel old absolute */
+  transform: none;        /* cancel old translateX */
+  pointer-events: none;   /* just in case, never block clicks */
+}
+
+/* Mobile: hide tagline + bigger tap area for links */
+@media (max-width: 600px) {
+  .tagline {
+    display: none;        /* remove "Mend Your Mood" on phones */
+  }
+
+  .nav-link {
+    padding: 10px 16px;   /* easier to tap on mobile */
+  }
+}
+/* --- FINAL FIX: make sure tagline never blocks clicks and links are on top --- */
+
+/* Remove "Mend Your Mood" completely (you anyway don't like it on phone) */
+.tagline {
+  display: none !important;
+}
+
+/* Make sure nav links are always on top and clickable */
+.nav-right,
+.nav-link {
+  position: relative;
+  z-index: 200;
+}
+/* === SIMPLE TOPBAR NAV (new) === */
+
+.topbar {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.topbar-brand {
+  font-weight: 800;
+  text-decoration: none;
+  color: #111827;
+}
+
+.topbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar-link {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #111827;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.topbar-link:hover {
+  background: #f3f4f6;
+}
+
+/* Mobile: slightly bigger tap area, neatly spaced */
+@media (max-width: 600px) {
+  .topbar {
+    padding: 10px 16px;
+  }
+
+  .topbar-link {
+    padding: 10px 14px;
+  }
+}

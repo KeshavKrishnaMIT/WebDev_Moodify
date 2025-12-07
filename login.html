@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login | Moodify</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main style="max-width:520px;margin:6rem auto;padding:1rem;">
+    <div style="background:#fff;border-radius:12px;padding:28px;box-shadow:0 12px 30px rgba(12,18,30,0.07);">
+      <h1 style="margin:0 0 8px 0;font-size:1.5rem">Welcome to Moodify</h1>
+      <p style="margin:0 0 18px 0;color:#6b7280">Enter a username to continue. Notes you save will be stored in your browser.</p>
+
+      <label style="display:block;margin-bottom:8px;font-weight:700">Username</label>
+      <input id="username" type="text" placeholder="e.g. keshav" style="width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;font-size:1rem" />
+
+      <div style="margin-top:16px;display:flex;gap:8px;align-items:center">
+        <button id="loginBtn" style="padding:10px 14px;border-radius:10px;border:0;background:#111827;color:#fff;font-weight:700;cursor:pointer">Login</button>
+        <button id="guestBtn" style="padding:10px 14px;border-radius:10px;border:1px solid #e5e7eb;background:transparent;cursor:pointer">Continue as Guest</button>
+      </div>
+
+      <p style="margin-top:14px;color:#9aa6bd;font-size:0.92rem">Notes are saved locally in your browser (localStorage). Clearing browser data will delete them.</p>
+    </div>
+  </main>
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const guestBtn = document.getElementById('guestBtn');
+    loginBtn.addEventListener('click', () => {
+      const name = document.getElementById('username').value.trim();
+      if (!name) {
+        alert('Please enter a username');
+        return;
+      }
+      localStorage.setItem('moodifyUser', name);
+      location.href = 'index.html';
+    });
+    guestBtn.addEventListener('click', () => {
+      localStorage.setItem('moodifyUser', 'Guest');
+      location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

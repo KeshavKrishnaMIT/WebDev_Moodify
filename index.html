@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moodify – Mends Your Mood</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<header class="site-header">
+  <div class="topbar">
+    <a href="/" class="topbar-brand">Moodify</a>
+
+    <nav class="topbar-links">
+      <a href="/" class="topbar-link">Home</a>
+      <a href="/about.html" class="topbar-link">About</a>
+      <a href="/login.html" class="topbar-link">Login</a>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Mood selection screen -->
+  <main class="main">
+    <h1 class="question">What mood do you have today?</h1>
+
+    <section class="mood-row" id="moodRow" aria-label="Pick a mood">
+      <!-- tiles added by script.js -->
+    </section>
+  </main>
+
+  <!-- Full page mood overlay -->
+  <section id="moodOverlay" class="mood-overlay" aria-hidden="true">
+    <div class="mood-overlay-inner">
+
+      <div class="mood-overlay-top">
+        <div>
+          <h2 id="moodTitle" class="mood-title">Happy</h2>
+          <p id="moodBgNote" class="mood-bg-note">Yellow happy bg</p>
+        </div>
+
+        <button class="close-btn" type="button" aria-label="Close mood view">
+          &times;
+        </button>
+      </div>
+
+      <p class="choose-label">Choose an action</p>
+
+      <div class="actions-row" id="actionsRow">
+        <!-- action buttons filled from JS -->
+      </div>
+
+      <!-- suggestion card -->
+      <section id="screen" class="mood-card" aria-live="polite">
+        <h3 class="card-title">Waiting for your choice…</h3>
+        <p class="card-text">
+          Pick any action above (Music, Videos, Read or Play) to see suggestions here.
+        </p>
+      </section>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Moodify</span>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
+

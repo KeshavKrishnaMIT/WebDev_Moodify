@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About | Moodify</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="topbar">
+    <a href="/" class="topbar-brand">Moodify</a>
+
+    <nav class="topbar-links">
+      <a href="/" class="topbar-link">Home</a>
+      <a href="/about.html" class="topbar-link">About</a>
+      <a href="/login.html" class="topbar-link">Login</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="container" role="main">
+    <article class="card">
+
+      <h1>About Moodify</h1>
+
+      <p>
+        <strong>Moodify</strong> is a simple and interactive web app that helps you choose the right activity based on your mood.
+        Whether you feel happy, chill, energetic, sad, or focused — Moodify guides you to something that matches your vibe.
+      </p>
+
+      <h2>How it works</h2>
+
+      <ul>
+        <li>Select your current mood</li>
+        <li>Choose what you want to do — listen, watch, read, or play</li>
+        <li>Get an instant suggestion that fits your mood</li>
+      </ul>
+
+      <h2>Why Moodify?</h2>
+
+      <p>
+        Moodify is built to be fast, clean, and fun. It is designed as a learning project and a creative experiment to explore
+        how mood-based recommendations can improve digital experiences.
+      </p>
+      <hr style="margin:40px 0 24px;">
+
+<div class="about-creator">
+  <img src="Moodieess.jpg" alt="Keshav Krishna Singh" class="creator-img">
+
+  <div class="creator-info">
+    <h3>Keshav Krishna Singh</h3>
+    <p>Web Page Developer</p>
+  </div>
+</div>
+
+
+    </article>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div>© <span id="year2"></span> Moodify</div>
+  </footer>
+
+  <script>
+    document.getElementById('year2').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
