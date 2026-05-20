@@ -1,12 +1,12 @@
-## 🔗 Live Link: https://moodify-13cee.web.app
-# 🌈Mood-Based Activity Explorer
+##  Live Link: https://moodify-13cee.web.app
+# Mood-Based Activity Explorer
 
 This is my first complete web project that I designed, built, and deployed live using Google Firebase.
 The core idea of this project is to recommend activities based on a user’s mood, making the interface simple, interactive, and mobile-friendly.
 
 This project marks my first hands-on experience with real-world frontend development and cloud deployment.
 
-## 💡 Core Idea
+##  Core Idea
 
 People often don’t know what to do when they feel a certain way — happy, sad, calm, or energetic.
 This project solves that by:
@@ -19,7 +19,7 @@ Keeping the experience simple, aesthetic, and distraction-free
 
 The focus was on clean UI, smooth interaction, and logic clarity, not complexity.
 
-## 🚀 What I Built
+##  What I Built
 
 ✔ A responsive mood selector UI
 ✔ Dynamic activity suggestions using JavaScript logic
@@ -27,7 +27,7 @@ The focus was on clean UI, smooth interaction, and logic clarity, not complexity
 ✔ Mobile-first design so it works properly on phones
 ✔ Simple code structure for easy understanding and future scaling
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 HTML5 – structure of the project
 
@@ -41,7 +41,7 @@ Git & GitHub – version control and project hosting
 
 No frameworks were used — everything is built using core web fundamentals.
 
-## 🌐 Deployment (Big Milestone 🎯)
+##  Deployment 
 
 This is my first project deployed on the internet using Firebase Hosting.
 
@@ -55,7 +55,7 @@ Linking GitHub workflow with production-ready code
 
 Fixing responsiveness and interaction bugs after deployment
 
-## 📘 What I Learned from This Project
+##  What I Learned from This Project
 
 Structuring a frontend project properly
 
@@ -71,7 +71,7 @@ Confidence to build and deploy future projects
 
 This project gave me the confidence that I can actually build and deploy real products, not just write code in theory.
 
-## 🧑‍💻 Why This Matters to Me
+##  Why This Matters to Me
 
 As a beginner, this project represents:
 
