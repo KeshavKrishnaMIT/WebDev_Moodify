@@ -21,11 +21,11 @@ The focus was on clean UI, smooth interaction, and logic clarity, not complexity
 
 ##  What I Built
 
-✔ A responsive mood selector UI
-✔ Dynamic activity suggestions using JavaScript logic
-✔ Smooth navigation sections like Home / About / Explore
-✔ Mobile-first design so it works properly on phones
-✔ Simple code structure for easy understanding and future scaling
+ A responsive mood selector UI
+ Dynamic activity suggestions using JavaScript logic
+ Smooth navigation sections like Home / About / Explore
+ Mobile-first design so it works properly on phones
+ Simple code structure for easy understanding and future scaling
 
 ##  Technologies Used
 
